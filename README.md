@@ -31,14 +31,14 @@ Port Forwarding
 
 kubectl port-forward service/argocd-server 8443:https -n argocd
 
-Create path app/infra in a repository
-
-
-
 Install base64 and decript de data in secret.
 
 echo -n 'exampleBase64'| base64.exe -d
 
+Create path app/infra in a repository
 
+Install minikube Nginx addons:
+https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/
+minikube addons enable ingress
 
 
