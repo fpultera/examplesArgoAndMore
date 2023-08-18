@@ -9,8 +9,6 @@ spec:
     repoURL: 'https://github.com/fpultera/examplesArgoAndMore.git'
     path: apps/infra
     targetRevision: HEAD
-    directory:
-      recurse: false
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
