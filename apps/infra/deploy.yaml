@@ -14,22 +14,22 @@ spec:
     spec:
       containers:
       - name: ssv-backoffice-webapp-container
-        image: 843244126156.dkr.ecr.us-east-1.amazonaws.com/use1-0-ssv-backoffice-webapp:m2
+        image: asd/use1-0-ssv-backoffice-webapp:m2
         ports:
         - containerPort: 3000
         env:
         - name: PUBLIC_API_URL
-          value: "https://m3gzvteeb0.execute-api.us-east-1.amazonaws.com/royal/employee/proxy"
+          value: "https://asd/royal/employee/proxy"
         - name: HOST_HEADER
           value: "x-forwarded-host"
         - name: ORIGIN
           value: "http://localhost:3000"
         - name: VITE_GRAPHQL_API
-          value: "https://m3gzvteeb0.execute-api.us-east-1.amazonaws.com/royal/employee/proxy/graphql/v1/graphql"
+          value: "https:/asd/royal/employee/proxy/graphql/v1/graphql"
         - name: PROTOCOL_HEADER
           value: "x-forwarded-proto"
         - name: VITE_INTERNAL_GRAPHQL_API
-          value: "http://hasura.dev.clubhub.local:8080/v1/graphql"
+          value: "http://hasura.asd:8080/v1/graphql"
         - name: NODE_ENV
           value: "development"
       imagePullSecrets:
