@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: ssv-backoffice-webapp-container
-        image: asd/use1-0-ssv-backoffice-webapp:m2
+        image: 843244126156.dkr.ecr.us-east-1.amazonaws.com/use1-0-ssv-backoffice-webapp:m2
         ports:
         - containerPort: 3000
         env:
@@ -29,7 +29,7 @@ spec:
         - name: PROTOCOL_HEADER
           value: "x-forwarded-proto"
         - name: VITE_INTERNAL_GRAPHQL_API
-          value: "http://hasura.asd:8080/v1/graphql"
+          value: "http://hasura.asdl:8080/v1/graphql"
         - name: NODE_ENV
           value: "development"
       imagePullSecrets:
