@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ssv-backoffice-webapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ssv-backoffice-webapp
+  template:
+    metadata:
+      labels:
+        app: ssv-backoffice-webapp
+    spec:
+      containers:
+      - name: ssv-backoffice-webapp-container
+        image: 843244126156.dkr.ecr.us-east-1.amazonaws.com/use1-0-ssv-backoffice-webapp:m2
+        ports:
+        - containerPort: 3000
+        env:
+        - name: PUBLIC_API_URL
+          value: "https://m3gzvteeb0.execute-api.us-east-1.amazonaws.com/royal/employee/proxy"
+        - name: HOST_HEADER
+          value: "x-forwarded-host"
+        - name: ORIGIN
+          value: "http://localhost:3000"
+        - name: VITE_GRAPHQL_API
+          value: "https://m3gzvteeb0.execute-api.us-east-1.amazonaws.com/royal/employee/proxy/graphql/v1/graphql"
+        - name: PROTOCOL_HEADER
+          value: "x-forwarded-proto"
+        - name: VITE_INTERNAL_GRAPHQL_API
+          value: "http://hasura.dev.clubhub.local:8080/v1/graphql"
+        - name: NODE_ENV
+          value: "development"
+      imagePullSecrets:
+        - name: regcred
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ssv-backoffice-webapp-service
+spec:
+  selector:
+    app: ssv-backoffice-webapp
+  ports:
+    - protocol: TCP
+      port: 3000
+  type: ClusterIP
